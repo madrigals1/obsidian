@@ -1,0 +1,40 @@
+services:
+  obsidian-livesync:
+    container_name: obsidian-livesync
+    image: docker.io/oleduc/docker-obsidian-livesync-couchdb:master
+    environment:
+      - TZ=${TZ}
+      - COUCHDB_USER=${COUCHDB_USER}
+      - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}
+      - SERVER_URL=${SERVER_URL}
+      - COUCHDB_DATABASE=obsidiandb
+    volumes:
+      - ./data:/opt/couchdb/data
+      - ./etc/local.d:/opt/couchdb/etc/local.d
+    ports:
+      - "5984:5984"
+    restart: unless-stopped
+
+  obsidian-remote:
+    image: lscr.io/linuxserver/obsidian:latest
+    container_name: obsidian-remote
+    restart: unless-stopped
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+    volumes:
+      - ./config:/config
+    ports:
+      - 3000:3000
+    shm_size: "1gb"
+    depends_on:
+      - obsidian-livesync
+
+networks:
+  https_network:
+    external: true
+    name: ${HTTPS_NETWORK}
+

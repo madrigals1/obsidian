@@ -1,0 +1,7 @@
+# Environment variables
+.env
+
+# Generated files
+config
+data
+etc
