@@ -27,6 +27,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ./config:/config
+      - ./vaults/obsidian_vault:/config/vaults/obsidian_vault
     ports:
       - ${OBSIDIAN_PORT}:3000
     shm_size: "1gb"
