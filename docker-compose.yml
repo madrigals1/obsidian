@@ -35,6 +35,24 @@ services:
     networks:
       - https_network
 
+  syncthing:
+    image: linuxserver/syncthing
+    container_name: syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+    volumes:
+      - ./vaults/obsidian_vault:/sync
+      - ./config/syncthing:/config
+    ports:
+      - "${SYNCTHING_GUI_PORT}:8384"
+      - "${SYNCTHING_PORT}:22000"
+      - "${SYNCTHING_LOCAL_DISCOVERY_PORT}:21027/udp"
+    restart: unless-stopped
+    networks:
+      - https_network
+
 networks:
   https_network:
     external: true
