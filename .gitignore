@@ -2,6 +2,12 @@
 .env
 
 # Generated files
-config
+config/*
 data
 etc
+vaults/obsidian_vault/*
+syncthing/config/*
+
+# Keep useful folders
+!syncthing/config/.gitkeep
+!vaults/obsidian_vault/.gitkeep

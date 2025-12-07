@@ -44,7 +44,7 @@ services:
       - TZ=${TZ}
     volumes:
       - ./vaults/obsidian_vault:/sync
-      - ./config/syncthing:/config
+      - ./syncthing/config:/config
     ports:
       - "${SYNCTHING_GUI_PORT}:8384"
       - "${SYNCTHING_PORT}:22000"
