@@ -12,7 +12,7 @@ services:
       - ./data:/opt/couchdb/data
       - ./etc/local.d:/opt/couchdb/etc/local.d
     ports:
-      - "5984:5984"
+      - "${COUCHDB_PORT}:5984"
     restart: unless-stopped
 
   obsidian-remote:
@@ -28,7 +28,7 @@ services:
     volumes:
       - ./config:/config
     ports:
-      - 3000:3000
+      - ${OBSIDIAN_PORT}:3000
     shm_size: "1gb"
     depends_on:
       - obsidian-livesync
