@@ -32,6 +32,8 @@ services:
     shm_size: "1gb"
     depends_on:
       - obsidian-livesync
+    networks:
+      - https_network
 
 networks:
   https_network:
