@@ -7,7 +7,7 @@ services:
       - COUCHDB_USER=${COUCHDB_USER}
       - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}
       - SERVER_URL=${SERVER_URL}
-      - COUCHDB_DATABASE=obsidiandb
+      - COUCHDB_DATABASE=${COUCHDB_DATABASE}
     volumes:
       - ./data:/opt/couchdb/data
       - ./etc/local.d:/opt/couchdb/etc/local.d
