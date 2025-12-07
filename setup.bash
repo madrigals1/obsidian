@@ -1,7 +1,7 @@
 source .env
 
 docker run \
- -e hostname=${HOSTNAME} \
+ -e hostname=${SERVER_URL} \
  -e database=${COUCHDB_DATABASE} \
  -e username=${COUCHDB_USER} \
  -e password=${COUCHDB_PASSWORD} \
