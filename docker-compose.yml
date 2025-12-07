@@ -14,6 +14,8 @@ services:
     ports:
       - "${COUCHDB_PORT}:5984"
     restart: unless-stopped
+    networks:
+      - https_network
 
   obsidian-remote:
     image: lscr.io/linuxserver/obsidian:latest
@@ -39,4 +41,3 @@ networks:
   https_network:
     external: true
     name: ${HTTPS_NETWORK}
-
